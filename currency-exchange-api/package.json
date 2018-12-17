@@ -1,0 +1,42 @@
+{
+  "name": "belatrix-test",
+  "version": "1.0.0",
+  "description": "this app will convert dollars to euros",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint app",
+    "start": "node server.js",
+    "dev": "nodemon -r dotenv/config server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "exchange",
+    "money",
+    "belatrix",
+    "test",
+    "API"
+  ],
+  "author": "Eliecer Uribe",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
+    "helmet": "^3.15.0",
+    "mongoose": "^5.4.0",
+    "morgan": "^1.9.1",
+    "winston": "^3.1.0"
+  }
+}
