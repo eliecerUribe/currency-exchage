@@ -1,0 +1,20 @@
+.app {
+  text-align: center;
+}
+.app-header {
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  height: 100px;
+  justify-content: center;
+}
+
+.app-footer-container {
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
