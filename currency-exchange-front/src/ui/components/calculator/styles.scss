@@ -35,11 +35,11 @@
 }
 
 .calculator-button {
+  font-weight: bold;
   height: 49px;
   margin-top: 20px;
-  font-size: 17px !important;
-  font-weight: bold !important;
   width: 320px;
+  font-size: 17px !important;
 }
 
 .calculator-wrapper-input-usd {
@@ -55,8 +55,8 @@
 
 .calculator-input-usd,
 .calculator-input-eu {
-  font-size: 16px !important;
   width: 100% !important;
+  font-size: 16px !important;
 }
 
 .calculator-wrapper-input-eu {
