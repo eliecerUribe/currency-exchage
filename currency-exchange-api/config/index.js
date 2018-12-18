@@ -1,7 +1,7 @@
 module.exports = {
   app: 'belatrix-test',
   env: process.env.NODE_ENV,
-  secret: 'mYsEcRet',
+  secret: 'mYs3cR3T',
   jwtConfig: {
     secret: process.env.JWT_SECRET,
     expireTime: process.env.JWT_EXPIRATION_MIN,
