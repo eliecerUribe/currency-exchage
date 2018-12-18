@@ -9,3 +9,9 @@
 
 2. Currency:
   *  /:id get the field from a id currency
+
+
+## To run the backend:
+
+  * npm install
+  * npm run dev
