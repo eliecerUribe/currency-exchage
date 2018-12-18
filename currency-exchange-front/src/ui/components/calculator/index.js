@@ -36,11 +36,11 @@ class Calculator extends Component {
         const currencyEur = await getCurrencyPrice(currencyEuroId);
         const amountEUR = amountUSD * currencyEur.change;
         
-        this.setState({ currencyEurPrice: currencyEur.change })
+        this.setState({ currencyEurPrice: currencyEur.change });
         const amountEURFormatted = this.formatPrice(amountEUR);
 
         this.setState({ amountEUR : amountEURFormatted });
-        this.loopRequestEveryXMinutes();
+        this.loopRequestEveryXMinutes(300000); // 5 minutes in miliseconds
       } else  {
         this.setState({ amountEUR : '' });
       }
@@ -49,7 +49,7 @@ class Calculator extends Component {
     }
   }
 
-  loopRequestEveryXMinutes = () => {
+  loopRequestEveryXMinutes = (miliseconds) => {
     setInterval(async () => {
       try {
         const amountUSD = parseFloat(this.state.amountUSD);
@@ -68,7 +68,7 @@ class Calculator extends Component {
       } catch(error) {
         console.log(error);
       }
-    }, 600000);
+    }, miliseconds);
   }
 
   formatPrice = (price) => {
