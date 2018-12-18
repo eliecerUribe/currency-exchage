@@ -1,5 +1,4 @@
 const { Exchange, Currency } = require('../../../db');
-// const logger = require('../../../config/logger');
 
 const findCurrency = async (currencyId) => {
   try {
