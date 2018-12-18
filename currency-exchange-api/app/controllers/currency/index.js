@@ -1,5 +1,4 @@
 const { currencyService } = require('../../services/');
-// const logger = require('../../../config/logger');
 
 const getCurrencyAmount = async (req, res) => {
   try {
