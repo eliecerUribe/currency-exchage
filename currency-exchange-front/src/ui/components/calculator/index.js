@@ -16,6 +16,17 @@ class Calculator extends Component {
     errorState: null,
   };
 
+  componentDidMount = async () => {
+    try {
+      const currencyEur = await getCurrencyPrice(currencyEuroId);
+
+      this.setState({ currencyEurPrice: currencyEur.change });
+      this.loopRequestEveryXTimes(600000); // cada 10 minutos
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
   handleOnChange = (event) => {
     const target = event.target;
     const value = target.value;
@@ -33,14 +44,10 @@ class Calculator extends Component {
       const amountUSD = this.getValidationPrice(this.state.amountUSD);
 
       if(amountUSD) {
-        const currencyEur = await getCurrencyPrice(currencyEuroId);
-        const amountEUR = amountUSD * currencyEur.change;
-        
-        this.setState({ currencyEurPrice: currencyEur.change });
+        const amountEUR = amountUSD * this.state.currencyEurPrice;
         const amountEURFormatted = this.formatPrice(amountEUR);
-
+        
         this.setState({ amountEUR : amountEURFormatted });
-        this.loopRequestEveryXMinutes(300000); // 5 minutes in miliseconds
       } else  {
         this.setState({ amountEUR : '' });
       }
@@ -49,18 +56,17 @@ class Calculator extends Component {
     }
   }
 
-  loopRequestEveryXMinutes = (miliseconds) => {
+  loopRequestEveryXTimes = (miliseconds) => {
     setInterval(async () => {
       try {
         const amountUSD = parseFloat(this.state.amountUSD);
         const currencyEurUpdated = await getCurrencyPrice(currencyEuroId);
         const amountEUR = amountUSD * currencyEurUpdated.change;
 
-        this.setState({ currencyEurPrice: currencyEurUpdated.change })
+        this.setState({ currencyEurPrice: currencyEurUpdated.change });
 
         if(!isNaN(amountEUR)) {
           const amountEURFormatted = this.formatPrice(amountEUR);
-
           this.setState({ amountEUR : amountEURFormatted });
         } else  {
           this.setState({ amountEUR : '' });
@@ -81,14 +87,12 @@ class Calculator extends Component {
     if (isNaN(priceInUsd)) {
       this.setState({ errorState: 'error' });
       return null;
-    }
-    else {
+    } else {
       this.setState({ errorState: 'success' });
       return parseFloat(priceInUsd);
     }
   }
 
- 
   render() {
     const {
       amountUSD,
@@ -118,7 +122,7 @@ class Calculator extends Component {
               <FormControl.Feedback />
               <HelpBlock className={`
                 ${errorState === 'error' ? 'is-visible' : 'is-hidden'}
-                `}
+              `}
               >
                 Not a valid number
               </HelpBlock>
