@@ -4,8 +4,8 @@
 ## Endpoints:
 
 1. Auth:
-⋅⋅* /register
-⋅⋅* /login 
+  * /register
+  * /login 
 
 2. Currency:
-..*  /:id get the field from a id currency
+  *  /:id get the field from a id currency
